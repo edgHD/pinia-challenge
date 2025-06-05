@@ -18,8 +18,8 @@
       </ul>
     </nav>
     <div>
-      <button v-if="!this.$vueShop.isLoggedIn" @click="this.$vueShops.login">Login</button>
-      <button v-if="this.$vueShop.isLoggedIn" @click="!this.$vueShops.logout">Logout</button>
+      <button v-if="!$vueShop.isLoggedIn" @click="$vueShop.login()">Login</button>
+      <button v-if="$vueShop.isLoggedIn" @click="!$vueShop.logout()">Logout</button>
     </div>
   </header>
 </template>
