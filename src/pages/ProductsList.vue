@@ -2,7 +2,7 @@
   <section>
     <ul>
       <product-item
-        v-for="prod in products"
+        v-for="prod in $vueShop.products"
         :key="prod.id"
         :id="prod.id"
         :title="prod.title"
@@ -18,7 +18,6 @@
 import ProductItem from '../components/products/ProductItem.vue';
 
 export default {
-  inject: ['products'],
   components: {
     ProductItem,
   },

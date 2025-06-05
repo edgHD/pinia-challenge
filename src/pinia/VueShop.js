@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const authStore = defineStore("vueShop", {
+export const vueShop = defineStore("vueShop", {
   state: () => ({
     isLoggedIn: false,
     products: [
@@ -16,7 +16,7 @@ export const authStore = defineStore("vueShop", {
       {
         id: "p2",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Tent_at_High_Shelf_Camp_cropped.jpg/640px-Tent_at_High_Shelf_Camp_cropped.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/c/c9/Tent_at_High_Shelf_Camp_cropped.jpg",
         title: "Mountain Tent",
         description: "A tent for the ambitious outdoor tourist.",
         price: 129.99,
@@ -60,14 +60,14 @@ export const authStore = defineStore("vueShop", {
       this.cart.qty++;
       this.cart.total += productData.price;
     },
-  },
-  removeProductFromCart(prodId) {
-    const productInCartIndex = this.cart.items.findIndex(
-      (cartItem) => cartItem.productId === prodId
-    );
-    const prodData = this.cart.items[productInCartIndex];
-    this.cart.items.splice(productInCartIndex, 1);
-    this.cart.qty -= prodData.qty;
-    this.cart.total -= prodData.price * prodData.qty;
+    removeProductFromCart(prodId) {
+      const productInCartIndex = this.cart.items.findIndex(
+        (cartItem) => cartItem.productId === prodId
+      );
+      const prodData = this.cart.items[productInCartIndex];
+      this.cart.items.splice(productInCartIndex, 1);
+      this.cart.qty -= prodData.qty;
+      this.cart.total -= prodData.price * prodData.qty;
+    },
   },
 });
