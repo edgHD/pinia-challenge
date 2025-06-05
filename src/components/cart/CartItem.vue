@@ -15,7 +15,7 @@
           <strong>{{ qty }}</strong>
         </div>
       </div>
-      <div class="item__total">Total: ${{ itemTotal }}</div>
+      <div class="item__total">Total: ${{ $vueShop.cartTotal }}</div>
       <button @click="remove">Remove</button>
     </div>
   </li>
@@ -24,11 +24,6 @@
 <script>
 export default {
   props: ['prodId', 'title', 'image', 'price', 'qty'],
-  computed: {
-    itemTotal() {
-      return (this.price * this.qty).toFixed(2);
-    }
-  },
   methods: {
     remove() {
       this.$vueShop.removeProductFromCart(this.prodId);

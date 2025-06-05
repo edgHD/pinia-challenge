@@ -1,7 +1,7 @@
 <template>
-  <section>
-    <h2>Your Cart</h2>
-    <h3>Total Amount: <base-badge mode="elegant">${{ cartTotal }}</base-badge></h3>
+  <section v-if="!$vueShop.cartIsEmpty">
+    <h2>Your Cart ({{ $vueShop.cartQuantity }} items)</h2>
+    <h3>Total Amount: <base-badge mode="elegant">${{ $vueShop.cartTotal }}</base-badge></h3>
     <ul>
       <cart-item
         v-for="item in $vueShop.cart.items"
@@ -14,6 +14,9 @@
       ></cart-item>
     </ul>
   </section>
+  <section v-else>
+    Your cart is empty!
+  </section>
 </template>
 
 <script>
@@ -22,11 +25,6 @@ import CartItem from '../components/cart/CartItem.vue';
 export default {
   components: {
     CartItem,
-  },
-  computed: {
-    cartTotal() {
-      return this.$vueShop.cart.total.toFixed(2);
-    }
   }
 };
 </script>

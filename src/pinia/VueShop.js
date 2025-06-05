@@ -33,6 +33,17 @@ export const vueShop = defineStore("vueShop", {
     ],
     cart: { items: [], total: 0, qty: 0 },
   }),
+  getters: {
+    cartTotal: (state) => {
+      return state.cart.total.toFixed(2);
+    },
+    cartQuantity: (state) => {
+      return state.cart.qty;
+    },
+    cartIsEmpty: (state) => {
+      return state.cart.qty === 0;
+    },
+  },
   actions: {
     login() {
       this.isLoggedIn = true;
